@@ -1,0 +1,7 @@
+bitcoins: https://newsapi.org/v2/top-headlines?q=bitcoin&apiKey=8800a4b6343c40029809370302c481fc
+business: https://newsapi.org/v2/top-headlines?category=business&apiKey=8800a4b6343c40029809370302c481fc
+tech: https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=8800a4b6343c40029809370302c481fc
+politics: https://newsapi.org/v2/top-headlines?category=politics&apiKey=8800a4b6343c40029809370302c481fc
+all: https://newsapi.org/v2/everything?q=all&apiKey=8800a4b6343c40029809370302c481fc
+search: xyz https://newsapi.org/v2/everything?q=xyz&apiKey=8800a4b6343c40029809370302c481fc
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="4dp"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:iconifiedByDefault="false">
+
+        <requestFocus />
+
+    </android.support.v7.widget.SearchView>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search"
+        android:id="@+id/swipe_refresh">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/empty_view"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:textAppearanceMedium"/>
+
+
+
+
+
+
+</RelativeLayout>
