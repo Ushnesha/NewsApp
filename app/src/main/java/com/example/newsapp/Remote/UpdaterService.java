@@ -9,6 +9,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.newsapp.Fragments.NewsFragment;
 import com.example.newsapp.MainActivity;
 import com.example.newsapp.Models.NewsModel;
 
@@ -31,10 +32,10 @@ public class UpdaterService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
 
         Log.e(TAG,"onHandleService called");
-        String s=intent.getStringExtra(MainActivity.Query);
+        String s=intent.getStringExtra(NewsFragment.Query);
 
         if(EndpointUtils.isCheckConnection(this)){
-           sendBroadcast(new Intent(MainActivity.FILTER_ACTION_KEY).putExtra(EXTRA_REFRESHING, true));
+           //sendBroadcast(new Intent(NewsFragment.REFRESH_ACTION_KEY).putExtra(EXTRA_REFRESHING, true));
 
 
             try {
@@ -42,9 +43,9 @@ public class UpdaterService extends IntentService {
                 String urlString= EndpointUtils.fetchPlainText(fetchedUrl);
                 ArrayList<NewsModel> newsList= EndpointUtils.fetchNews(urlString);
                 Intent intent1=new Intent();
-                intent1.setAction(MainActivity.FILTER_ACTION_KEY);
-                intent1.putExtra(EXTRA_REFRESHING, false);
-                intent1.putParcelableArrayListExtra(MainActivity.ARRAYLISTKEY, newsList);
+                intent1.setAction(NewsFragment.FILTER_ACTION_KEY);
+                intent1.putExtra(EXTRA_REFRESHING,true);
+                intent1.putParcelableArrayListExtra(NewsFragment.ARRAYLISTKEY, newsList);
 
                 LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent1);
 
@@ -53,7 +54,7 @@ public class UpdaterService extends IntentService {
                 e.printStackTrace();
             }
 
-            sendBroadcast(new Intent(MainActivity.FILTER_ACTION_KEY).putExtra(EXTRA_REFRESHING,false));
+           // sendBroadcast(new Intent(NewsFragment.REFRESH_ACTION_KEY).putExtra(EXTRA_REFRESHING,false));
 
         }else {
             Handler handler=new Handler(Looper.getMainLooper());
